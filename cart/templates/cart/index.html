@@ -1,0 +1,25 @@
+{% extends '../base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="row p-3">
+    {% for product in products %}
+        <div class="col-sm-4 p-5 my-2">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" width="250px" height="280px" src="/media/{{ product.images }}" alt="{{ product.product_name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.product_name }}</h5>
+                    <p class="card-text">{{ product.description }}</p>
+                    <h6 class="card-text">Price: {{ product.price }} 円</h5>
+                    <a href="#" class="btn btn-primary">カートに追加</a><br><br>
+                    <a href="{% url 'product:product_detail' product.id %}" class="btn btn-warning">詳細</a>
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends '../base.html' %}
+
+{% block content %}
+
+<div class="row my-5 p-5 justify-content-md-center">
+    <div class="col-lg-5">
+        <img src="/media/{{ product.images }}" width="100%" id="detailImg" !important" alt=" product.product_name  }}" class="img-thumbnail">
+    </div>
+    <div class="col-lg-7">
+        <div class="card" style="width: 100%;">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.product_name }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <p class="card-text">{{ product.description }}</p>
+                <h6 class="card-text">Price: ${{ product.price }}</h6>
+                <a href="#" class="btn btn-success" class="card-link">Add to cart</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
