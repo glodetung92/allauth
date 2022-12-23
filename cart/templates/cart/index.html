@@ -4,6 +4,18 @@
 
 {% block content %}
 
+
+<form action="{% url 'product:product_search' %}" class="my-3 search" method="GET">
+    <div class="input-group w-80">
+        <input type="text" class="form-control" style="width:60%;" placeholder="Search" name="q" value="{{ q }}">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </div>
+</form> 
+
 <div class="row p-3">
     {% for product in products %}
         <div class="col-sm-4 p-5 my-2">
@@ -20,6 +32,24 @@
         </div>
 
     {% endfor %}
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
 </div>
 
 {% endblock %}
